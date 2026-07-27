@@ -1,0 +1,30 @@
+name: motif
+base: core24
+version: '1.0.1'
+summary: Native GTK4 + Libadwaita desktop theme manager for GNOME
+description: |
+  Motif is a native GTK4 and Libadwaita desktop application for GNOME that brings
+  a smooth, one-click experience to browsing, downloading, applying, and managing
+  GTK, Shell, Icon, and Cursor themes.
+
+grade: stable
+confinement: strict
+
+apps:
+  motif:
+    command: bin/motif
+    extensions: [gnome]
+    plugs:
+      - home
+      - gsettings
+      - network
+
+parts:
+  motif:
+    plugin: python
+    source: .
+    build-packages:
+      - python3-setuptools
+      - python3-wheel
+    stage-packages:
+      - python3-httpx
