@@ -26,17 +26,17 @@
   <screenshots>
     <screenshot type="default">
       <caption>Store tab showing GTK and GNOME themes</caption>
-      <image type="source">https://raw.githubusercontent.com/manas/motif/main/screenshots/store.png</image>
+      <image type="source">https://raw.githubusercontent.com/manasdotio/motif/main/screenshots/store.png</image>
     </screenshot>
     <screenshot>
       <caption>Installed themes manager with active selection</caption>
-      <image type="source">https://raw.githubusercontent.com/manas/motif/main/screenshots/installed.png</image>
+      <image type="source">https://raw.githubusercontent.com/manasdotio/motif/main/screenshots/installed.png</image>
     </screenshot>
   </screenshots>
 
-  <url type="homepage">https://github.com/manas/motif</url>
-  <url type="bugtracker">https://github.com/manas/motif/issues</url>
-  <url type="vcs-browser">https://github.com/manas/motif</url>
+  <url type="homepage">https://github.com/manasdotio/motif</url>
+  <url type="bugtracker">https://github.com/manasdotio/motif/issues</url>
+  <url type="vcs-browser">https://github.com/manasdotio/motif</url>
 
   <content_rating type="oars-1.1" />
 
