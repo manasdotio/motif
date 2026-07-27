@@ -1,0 +1,106 @@
+name: Build & Release Motif
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Build Tools & Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build httpx PyGObject
+
+      - name: Build Wheel and Source Distribution
+        run: |
+          python -m build
+
+      - name: Install appimagetool
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fuse libfuse2 desktop-file-utils
+          curl -sL https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage -o /usr/local/bin/appimagetool
+          chmod +x /usr/local/bin/appimagetool
+
+      - name: Build AppImage
+        run: |
+          mkdir -p /tmp/Motif.AppDir/usr/share/applications /tmp/Motif.AppDir/usr/share/icons/hicolor/scalable/apps /tmp/Motif.AppDir/usr/share/metainfo /tmp/Motif.AppDir/usr/share/glib-2.0/schemas
+          pip install --prefix=/tmp/Motif.AppDir/usr --no-deps .
+          cp org.gnome.Motif.desktop /tmp/Motif.AppDir/
+          cp org.gnome.Motif.desktop /tmp/Motif.AppDir/usr/share/applications/
+          cp org.gnome.Motif.svg /tmp/Motif.AppDir/
+          cp org.gnome.Motif.svg /tmp/Motif.AppDir/.DirIcon
+          cp org.gnome.Motif.svg /tmp/Motif.AppDir/usr/share/icons/hicolor/scalable/apps/
+          cp org.gnome.Motif.metainfo.xml /tmp/Motif.AppDir/usr/share/metainfo/
+          cp motif/data/org.gnome.Motif.gschema.xml /tmp/Motif.AppDir/usr/share/glib-2.0/schemas/
+          glib-compile-schemas /tmp/Motif.AppDir/usr/share/glib-2.0/schemas/
+
+          cat << "EOF" > /tmp/Motif.AppDir/AppRun
+          #!/bin/bash
+          HERE="$(dirname "$(readlink -f "${0}")")"
+          export PATH="${HERE}/usr/bin:${PATH}"
+          export PYTHONPATH="${HERE}/usr/lib/python3.11/site-packages:${HERE}/usr/lib64/python3.11/site-packages:${PYTHONPATH}"
+          export XDG_DATA_DIRS="${HERE}/usr/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+          exec "${HERE}/usr/bin/motif" "$@"
+          EOF
+          chmod +x /tmp/Motif.AppDir/AppRun
+
+          ARCH=x86_64 /usr/local/bin/appimagetool /tmp/Motif.AppDir dist/Motif-x86_64.AppImage
+
+      - name: Build Debian .deb Package
+        run: |
+          python3 -c '
+          import os, tarfile
+          deb_dir = "/tmp/deb_build"
+          os.system(f"rm -rf {deb_dir} && mkdir -p {deb_dir}/usr/bin {deb_dir}/usr/lib/python3/dist-packages {deb_dir}/usr/share/applications {deb_dir}/usr/share/icons/hicolor/scalable/apps {deb_dir}/usr/share/metainfo {deb_dir}/usr/share/glib-2.0/schemas")
+          os.system(f"cp -r motif {deb_dir}/usr/lib/python3/dist-packages/")
+          os.system(f"cp org.gnome.Motif.desktop {deb_dir}/usr/share/applications/")
+          os.system(f"cp org.gnome.Motif.svg {deb_dir}/usr/share/icons/hicolor/scalable/apps/")
+          os.system(f"cp org.gnome.Motif.metainfo.xml {deb_dir}/usr/share/metainfo/")
+          os.system(f"cp motif/data/org.gnome.Motif.gschema.xml {deb_dir}/usr/share/glib-2.0/schemas/")
+          with open(f"{deb_dir}/usr/bin/motif", "w") as f:
+              f.write("#!/usr/bin/env python3\nfrom motif.main import main\nimport sys\nif __name__ == \"__main__\":\n    sys.exit(main())\n")
+          os.chmod(f"{deb_dir}/usr/bin/motif", 0o755)
+          control_dir = "/tmp/deb_control"
+          os.system(f"rm -rf {control_dir} && mkdir -p {control_dir}")
+          with open(f"{control_dir}/control", "w") as f:
+              f.write("Package: motif\nVersion: 1.0.1\nArchitecture: all\nMaintainer: Motif Contributors <https://github.com/manasdotio/motif>\nDepends: python3 (>= 3.11), python3-gi, gir1.2-gtk-4.0, gir1.2-adw-1, python3-httpx\nSection: utils\nPriority: optional\nDescription: Native GTK4 + Libadwaita desktop theme manager for GNOME\n")
+          os.system(f"tar -c -J --owner=0 --group=0 -f /tmp/control.tar.xz -C {control_dir} .")
+          os.system(f"tar -c -J --owner=0 --group=0 -f /tmp/data.tar.xz -C {deb_dir} .")
+          with open("/tmp/debian-binary", "w") as f:
+              f.write("2.0\n")
+          def create_ar(outfile, files):
+              with open(outfile, "wb") as f:
+                  f.write(b"!<arch>\n")
+                  for fn in files:
+                      name = os.path.basename(fn)
+                      st = os.stat(fn)
+                      size = st.st_size
+                      mtime = int(st.st_mtime)
+                      hdr = f"{name:<16}{mtime:<12}0     0     100644  {size:<10}`\n".encode("ascii")
+                      f.write(hdr)
+                      with open(fn, "rb") as in_f:
+                          f.write(in_f.read())
+                      if size % 2 != 0:
+                          f.write(b"\n")
+          create_ar("dist/motif_1.0.1_all.deb", ["/tmp/debian-binary", "/tmp/control.tar.xz", "/tmp/data.tar.xz"])
+          '
+
+      - name: Create GitHub Release & Upload Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
