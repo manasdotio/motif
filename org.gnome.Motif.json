@@ -33,8 +33,10 @@
             ],
             "sources": [
                 {
-                    "type": "dir",
-                    "path": "."
+                    "type": "git",
+                    "url": "https://github.com/manasdotio/motif.git",
+                    "tag": "v1.0.0",
+                    "commit": "e167d47aa909227d4d574c6cca09480da774e894"
                 }
             ]
         }
