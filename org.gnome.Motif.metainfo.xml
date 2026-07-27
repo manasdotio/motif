@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.gnome.Motif</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>Motif</name>
+  <summary>Browse, download, apply, and manage GTK and GNOME themes</summary>
+  <developer_name>Motif Contributors</developer_name>
+
+  <description>
+    <p>
+      Motif is a native GTK4 and Libadwaita desktop application for GNOME that brings a smooth, one-click experience to browsing, downloading, applying, and managing desktop themes.
+    </p>
+    <p>Features include:</p>
+    <ul>
+      <li>Browse GTK, GNOME Shell, Icon, and Cursor themes from gnome-look.org (OCS API).</li>
+      <li>One-click download, validation, extraction, and installation to user theme directories.</li>
+      <li>Install directly from GitHub repository links or raw archive URLs.</li>
+      <li>Direct GSettings application with instant theme toggling and rollback history.</li>
+      <li>Scan local and system theme directories automatically.</li>
+    </ul>
+  </description>
+
+  <launchable type="desktop-id">org.gnome.Motif.desktop</launchable>
+
+  <screenshots>
+    <screenshot type="default">
+      <caption>Store tab showing GTK and GNOME themes</caption>
+      <image type="source">https://raw.githubusercontent.com/manas/motif/main/screenshots/store.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Installed themes manager with active selection</caption>
+      <image type="source">https://raw.githubusercontent.com/manas/motif/main/screenshots/installed.png</image>
+    </screenshot>
+  </screenshots>
+
+  <url type="homepage">https://github.com/manas/motif</url>
+  <url type="bugtracker">https://github.com/manas/motif/issues</url>
+  <url type="vcs-browser">https://github.com/manas/motif</url>
+
+  <content_rating type="oars-1.1" />
+
+  <releases>
+    <release version="1.0.0" date="2026-07-26">
+      <description>
+        <p>Initial release of Motif Theme Manager for GNOME.</p>
+      </description>
+    </release>
+  </releases>
+</component>

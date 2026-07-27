@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "motif"
+version = "1.0.0"
+description = "Native GTK4 + Libadwaita desktop theme manager for GNOME"
+readme = "README.md"
+authors = [{ name = "Motif Contributors" }]
+license = { text = "GPL-3.0-or-later" }
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.24.0",
+    "PyGObject>=3.44.0"
+]
+
+[project.scripts]
+motif = "motif.main:main"
+
+[tool.setuptools.packages.find]
+include = ["motif*"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q"
+testpaths = ["tests"]

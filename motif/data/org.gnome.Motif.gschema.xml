@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="motif">
+  <schema id="org.gnome.Motif" path="/org/gnome/Motif/">
+    <key name="last-category" type="s">
+      <default>'all'</default>
+      <summary>Last selected category</summary>
+      <description>The category selected during the last session.</description>
+    </key>
+    <key name="last-sort" type="s">
+      <default>'rating'</default>
+      <summary>Last selected sort order</summary>
+      <description>The sort option chosen during the last session.</description>
+    </key>
+    <key name="favorites" type="as">
+      <default>[]</default>
+      <summary>Favorite themes</summary>
+      <description>List of item IDs favorited by the user.</description>
+    </key>
+  </schema>
+</schemalist>

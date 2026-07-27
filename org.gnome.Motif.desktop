@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Motif
+Comment=Browse, download, apply, and manage GTK, Shell, Icon, and Cursor themes for GNOME
+Exec=motif
+Icon=org.gnome.Motif
+Terminal=false
+Type=Application
+Categories=Settings;DesktopSettings;
+Keywords=Theme;GTK;Icons;Cursor;Shell;GNOME;Appearance;
+StartupNotify=true
+SingleMainWindow=true
