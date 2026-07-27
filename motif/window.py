@@ -60,8 +60,8 @@ class MotifWindow(Adw.ApplicationWindow):
         github_hdr_btn = Gtk.Button(label="GitHub")
         github_hdr_btn.add_css_class("flat")
         github_hdr_btn.add_css_class("pill")
-        github_hdr_btn.set_tooltip_text("Open GitHub Repository (https://github.com/manas/motif)")
-        github_hdr_btn.connect("clicked", lambda b: Gio.AppInfo.launch_default_for_uri("https://github.com/manas/motif", None))
+        github_hdr_btn.set_tooltip_text("Open GitHub Repository (https://github.com/manasdotio/motif)")
+        github_hdr_btn.connect("clicked", lambda b: Gio.AppInfo.launch_default_for_uri("https://github.com/manasdotio/motif", None))
         self.header_bar.pack_end(github_hdr_btn)
 
         # Menu Button (Primary Menu)
@@ -232,7 +232,7 @@ class MotifWindow(Adw.ApplicationWindow):
 
         # Action: Open GitHub Repository
         action_github = Gio.SimpleAction.new("open_github", None)
-        action_github.connect("activate", lambda a, p: Gio.AppInfo.launch_default_for_uri("https://github.com/manas/motif", None))
+        action_github.connect("activate", lambda a, p: Gio.AppInfo.launch_default_for_uri("https://github.com/manasdotio/motif", None))
         self.add_action(action_github)
 
         # Action: Revert Last Change
@@ -263,8 +263,8 @@ class MotifWindow(Adw.ApplicationWindow):
             about.set_version("1.0.0")
             about.set_developer_name("GNOME Desktop Tools")
             about.set_comments("Native GTK4 + Libadwaita theme manager for GNOME desktop.")
-            about.set_website("https://github.com/manas/motif")
-            about.set_issue_url("https://github.com/manas/motif/issues")
+            about.set_website("https://github.com/manasdotio/motif")
+            about.set_issue_url("https://github.com/manasdotio/motif/issues")
             about.set_license_type(Gtk.License.GPL_3_0)
             about.set_copyright("© 2026 Motif Developers")
             about.present(self)
@@ -276,5 +276,5 @@ class MotifWindow(Adw.ApplicationWindow):
             win.set_version("1.0.0")
             win.set_developer_name("GNOME Desktop Tools")
             win.set_comments("Native GTK4 + Libadwaita theme manager for GNOME desktop.")
-            win.set_website("https://github.com/manas/motif")
+            win.set_website("https://github.com/manasdotio/motif")
             win.present()
