@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>org.gnome.Motif</id>
+  <id>io.github.manasdotio.motif</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <name>Motif</name>
   <summary>Browse, download, apply, and manage GTK and GNOME themes</summary>
-  <developer_name>Motif Contributors</developer_name>
+  <developer_name>Manas Singh</developer_name>
 
   <description>
     <p>
@@ -21,7 +21,7 @@
     </ul>
   </description>
 
-  <launchable type="desktop-id">org.gnome.Motif.desktop</launchable>
+  <launchable type="desktop-id">io.github.manasdotio.motif.desktop</launchable>
 
   <screenshots>
     <screenshot type="default">

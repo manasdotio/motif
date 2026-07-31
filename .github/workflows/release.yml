@@ -37,13 +37,13 @@ jobs:
         run: |
           mkdir -p /tmp/Motif.AppDir/usr/share/applications /tmp/Motif.AppDir/usr/share/icons/hicolor/scalable/apps /tmp/Motif.AppDir/usr/share/metainfo /tmp/Motif.AppDir/usr/share/glib-2.0/schemas
           pip install --prefix=/tmp/Motif.AppDir/usr --no-deps .
-          cp org.gnome.Motif.desktop /tmp/Motif.AppDir/
-          cp org.gnome.Motif.desktop /tmp/Motif.AppDir/usr/share/applications/
-          cp org.gnome.Motif.svg /tmp/Motif.AppDir/
-          cp org.gnome.Motif.svg /tmp/Motif.AppDir/.DirIcon
-          cp org.gnome.Motif.svg /tmp/Motif.AppDir/usr/share/icons/hicolor/scalable/apps/
-          cp org.gnome.Motif.metainfo.xml /tmp/Motif.AppDir/usr/share/metainfo/
-          cp motif/data/org.gnome.Motif.gschema.xml /tmp/Motif.AppDir/usr/share/glib-2.0/schemas/
+          cp io.github.manasdotio.motif.desktop /tmp/Motif.AppDir/
+          cp io.github.manasdotio.motif.desktop /tmp/Motif.AppDir/usr/share/applications/
+          cp io.github.manasdotio.motif.svg /tmp/Motif.AppDir/
+          cp io.github.manasdotio.motif.svg /tmp/Motif.AppDir/.DirIcon
+          cp io.github.manasdotio.motif.svg /tmp/Motif.AppDir/usr/share/icons/hicolor/scalable/apps/
+          cp io.github.manasdotio.motif.metainfo.xml /tmp/Motif.AppDir/usr/share/metainfo/
+          cp motif/data/io.github.manasdotio.motif.gschema.xml /tmp/Motif.AppDir/usr/share/glib-2.0/schemas/
           glib-compile-schemas /tmp/Motif.AppDir/usr/share/glib-2.0/schemas/
 
           cat << "EOF" > /tmp/Motif.AppDir/AppRun
@@ -65,10 +65,10 @@ jobs:
           deb_dir = "/tmp/deb_build"
           os.system(f"rm -rf {deb_dir} && mkdir -p {deb_dir}/usr/bin {deb_dir}/usr/lib/python3/dist-packages {deb_dir}/usr/share/applications {deb_dir}/usr/share/icons/hicolor/scalable/apps {deb_dir}/usr/share/metainfo {deb_dir}/usr/share/glib-2.0/schemas")
           os.system(f"cp -r motif {deb_dir}/usr/lib/python3/dist-packages/")
-          os.system(f"cp org.gnome.Motif.desktop {deb_dir}/usr/share/applications/")
-          os.system(f"cp org.gnome.Motif.svg {deb_dir}/usr/share/icons/hicolor/scalable/apps/")
-          os.system(f"cp org.gnome.Motif.metainfo.xml {deb_dir}/usr/share/metainfo/")
-          os.system(f"cp motif/data/org.gnome.Motif.gschema.xml {deb_dir}/usr/share/glib-2.0/schemas/")
+          os.system(f"cp io.github.manasdotio.motif.desktop {deb_dir}/usr/share/applications/")
+          os.system(f"cp io.github.manasdotio.motif.svg {deb_dir}/usr/share/icons/hicolor/scalable/apps/")
+          os.system(f"cp io.github.manasdotio.motif.metainfo.xml {deb_dir}/usr/share/metainfo/")
+          os.system(f"cp motif/data/io.github.manasdotio.motif.gschema.xml {deb_dir}/usr/share/glib-2.0/schemas/")
           with open(f"{deb_dir}/usr/bin/motif", "w") as f:
               f.write("#!/usr/bin/env python3\nfrom motif.main import main\nimport sys\nif __name__ == \"__main__\":\n    sys.exit(main())\n")
           os.chmod(f"{deb_dir}/usr/bin/motif", 0o755)

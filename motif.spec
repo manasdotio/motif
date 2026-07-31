@@ -32,22 +32,22 @@ GTK, Shell, Icon, and Cursor themes.
 
 %install
 %py3_install
-install -Dm644 org.gnome.Motif.desktop %{buildroot}%{_datadir}/applications/org.gnome.Motif.desktop
-install -Dm644 org.gnome.Motif.metainfo.xml %{buildroot}%{_datadir}/metainfo/org.gnome.Motif.metainfo.xml
-install -Dm644 org.gnome.Motif.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Motif.svg
-install -Dm644 org.gnome.Motif-symbolic.svg %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Motif-symbolic.svg
-install -Dm644 motif/data/org.gnome.Motif.gschema.xml %{buildroot}%{_datadir}/glib-2.0/schemas/org.gnome.Motif.gschema.xml
+install -Dm644 io.github.manasdotio.motif.desktop %{buildroot}%{_datadir}/applications/io.github.manasdotio.motif.desktop
+install -Dm644 io.github.manasdotio.motif.metainfo.xml %{buildroot}%{_datadir}/metainfo/io.github.manasdotio.motif.metainfo.xml
+install -Dm644 io.github.manasdotio.motif.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/io.github.manasdotio.motif.svg
+install -Dm644 io.github.manasdotio.motif-symbolic.svg %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/io.github.manasdotio.motif-symbolic.svg
+install -Dm644 motif/data/io.github.manasdotio.motif.gschema.xml %{buildroot}%{_datadir}/glib-2.0/schemas/io.github.manasdotio.motif.gschema.xml
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/motif
 %{python3_sitelib}/motif*
-%{_datadir}/applications/org.gnome.Motif.desktop
-%{_datadir}/metainfo/org.gnome.Motif.metainfo.xml
-%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Motif.svg
-%{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Motif-symbolic.svg
-%{_datadir}/glib-2.0/schemas/org.gnome.Motif.gschema.xml
+%{_datadir}/applications/io.github.manasdotio.motif.desktop
+%{_datadir}/metainfo/io.github.manasdotio.motif.metainfo.xml
+%{_datadir}/icons/hicolor/scalable/apps/io.github.manasdotio.motif.svg
+%{_datadir}/icons/hicolor/symbolic/apps/io.github.manasdotio.motif-symbolic.svg
+%{_datadir}/glib-2.0/schemas/io.github.manasdotio.motif.gschema.xml
 
 %changelog
 * Mon Jul 27 2026 Motif Contributors <https://github.com/manasdotio/motif> - 1.0.1-1

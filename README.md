@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="org.gnome.Motif.svg" width="128" height="128" alt="Motif Logo">
+  <img src="io.github.manasdotio.motif.svg" width="128" height="128" alt="Motif Logo">
   <h1 align="center">Motif</h1>
   <p align="center"><b>Native GTK4 + Libadwaita Desktop Theme Manager for GNOME</b></p>
   <p align="center">
     <a href="https://github.com/manasdotio/motif/releases/latest"><img src="https://img.shields.io/github/v/release/manasdotio/motif?style=for-the-badge&color=3584e4" alt="Latest Release"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-GPL--3.0-blue.svg?style=for-the-badge&color=26a269" alt="License GPL-3.0"></a>
-    <a href="https://github.com/flathub/flathub/pull/9524"><img src="https://img.shields.io/badge/Flathub-Pending-orange.svg?style=for-the-badge&logo=flatpak" alt="Flathub Status"></a>
+    <a href="https://github.com/flathub/flathub/pulls"><img src="https://img.shields.io/badge/Flathub-Pending-orange.svg?style=for-the-badge&logo=flatpak" alt="Flathub Status"></a>
   </p>
 </p>
 
@@ -61,14 +61,13 @@ chmod +x Motif-x86_64.AppImage
 ---
 
 ### 3. 📦 Flatpak (Flathub)
-*(Flathub PR [#9524](https://github.com/flathub/flathub/pull/9524) currently under review)*
 
 ```bash
 # Install via Flathub
-flatpak install flathub org.gnome.Motif
+flatpak install flathub io.github.manasdotio.motif
 
 # Run Motif
-flatpak run org.gnome.Motif
+flatpak run io.github.manasdotio.motif
 ```
 
 ---

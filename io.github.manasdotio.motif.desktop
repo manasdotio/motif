@@ -2,7 +2,7 @@
 Name=Motif
 Comment=Browse, download, apply, and manage GTK, Shell, Icon, and Cursor themes for GNOME
 Exec=motif
-Icon=org.gnome.Motif
+Icon=io.github.manasdotio.motif
 Terminal=false
 Type=Application
 Categories=Settings;DesktopSettings;

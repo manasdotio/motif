@@ -20,9 +20,9 @@ package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 org.gnome.Motif.desktop "$pkgdir/usr/share/applications/org.gnome.Motif.desktop"
-  install -Dm644 org.gnome.Motif.metainfo.xml "$pkgdir/usr/share/metainfo/org.gnome.Motif.metainfo.xml"
-  install -Dm644 org.gnome.Motif.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.gnome.Motif.svg"
-  install -Dm644 org.gnome.Motif-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/org.gnome.Motif-symbolic.svg"
-  install -Dm644 motif/data/org.gnome.Motif.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/org.gnome.Motif.gschema.xml"
+  install -Dm644 io.github.manasdotio.motif.desktop "$pkgdir/usr/share/applications/io.github.manasdotio.motif.desktop"
+  install -Dm644 io.github.manasdotio.motif.metainfo.xml "$pkgdir/usr/share/metainfo/io.github.manasdotio.motif.metainfo.xml"
+  install -Dm644 io.github.manasdotio.motif.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.manasdotio.motif.svg"
+  install -Dm644 io.github.manasdotio.motif-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/io.github.manasdotio.motif-symbolic.svg"
+  install -Dm644 motif/data/io.github.manasdotio.motif.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/io.github.manasdotio.motif.gschema.xml"
 }

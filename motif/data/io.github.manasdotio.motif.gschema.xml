@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="motif">
-  <schema id="org.gnome.Motif" path="/org/gnome/Motif/">
+  <schema id="io.github.manasdotio.motif" path="/io/github/manasdotio/motif/">
     <key name="last-category" type="s">
       <default>'all'</default>
       <summary>Last selected category</summary>

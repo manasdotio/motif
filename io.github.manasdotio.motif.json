@@ -1,5 +1,5 @@
 {
-    "app-id": "org.gnome.Motif",
+    "app-id": "io.github.manasdotio.motif",
     "runtime": "org.gnome.Platform",
     "runtime-version": "46",
     "sdk": "org.gnome.Sdk",
@@ -25,11 +25,11 @@
             "buildsystem": "simple",
             "build-commands": [
                 "pip3 install --prefix=${FLATPAK_DEST} --no-deps .",
-                "install -Dm644 org.gnome.Motif.desktop ${FLATPAK_DEST}/share/applications/org.gnome.Motif.desktop",
-                "install -Dm644 org.gnome.Motif.metainfo.xml ${FLATPAK_DEST}/share/metainfo/org.gnome.Motif.metainfo.xml",
-                "install -Dm644 org.gnome.Motif.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/org.gnome.Motif.svg",
-                "install -Dm644 org.gnome.Motif-symbolic.svg ${FLATPAK_DEST}/share/icons/hicolor/symbolic/apps/org.gnome.Motif-symbolic.svg",
-                "install -Dm644 motif/data/org.gnome.Motif.gschema.xml ${FLATPAK_DEST}/share/glib-2.0/schemas/org.gnome.Motif.gschema.xml",
+                "install -Dm644 io.github.manasdotio.motif.desktop ${FLATPAK_DEST}/share/applications/io.github.manasdotio.motif.desktop",
+                "install -Dm644 io.github.manasdotio.motif.metainfo.xml ${FLATPAK_DEST}/share/metainfo/io.github.manasdotio.motif.metainfo.xml",
+                "install -Dm644 io.github.manasdotio.motif.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/io.github.manasdotio.motif.svg",
+                "install -Dm644 io.github.manasdotio.motif-symbolic.svg ${FLATPAK_DEST}/share/icons/hicolor/symbolic/apps/io.github.manasdotio.motif-symbolic.svg",
+                "install -Dm644 motif/data/io.github.manasdotio.motif.gschema.xml ${FLATPAK_DEST}/share/glib-2.0/schemas/io.github.manasdotio.motif.gschema.xml",
                 "glib-compile-schemas ${FLATPAK_DEST}/share/glib-2.0/schemas"
             ],
             "sources": [

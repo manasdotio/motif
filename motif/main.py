@@ -52,7 +52,7 @@ def load_application_css():
 class MotifApplication(Adw.Application):
     def __init__(self):
         super().__init__(
-            application_id="org.gnome.Motif",
+            application_id="io.github.manasdotio.motif",
             flags=Gio.ApplicationFlags.FLAGS_NONE
         )
         GLib.set_application_name("Motif")
